@@ -1,0 +1,2 @@
+# ChurchMan
+Church Management System
