@@ -1,0 +1,57 @@
+{% extends "church/base.html" %}
+
+{% block title %} Income {% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2 class="mb-0">Income Report</h2>
+                </div>
+                <div class="card-body">
+                    <h3 class="text-center text-secondary mb-4">Profit/Loss Overview</h3>
+                    
+                    <div class="row mb-3">
+                        <div class="col-6 text-right font-weight-bold">Total Income:</div>
+                        <div class="col-6 text-left">{{ total_income | floatformat:2 }}</div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-6 text-right font-weight-bold">Total Expenses:</div>
+                        <div class="col-6 text-left">{{ total_expenses | floatformat:2 }}</div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-6 text-right font-weight-bold">Profit/Loss:</div>
+                        <div class="col-6 text-left">
+                            <span class="{% if profit_loss >= 0 %}text-success{% else %}text-danger{% endif %}">
+                                {{ profit_loss | floatformat:2 }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-6 text-right font-weight-bold">Status:</div>
+                        <div class="col-6 text-left">
+                            <span class="badge {% if status == 'Profit' %}badge-success{% else %}badge-danger{% endif %}">
+                                {{ status }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="text-center">
+                        <a href="{% url 'profit_loss' %}" class="btn btn-outline-primary">
+                            View Detailed Report
+                        </a>
+                    </div> -->
+                </div>
+                <div class="card-footer text-center text-muted">
+                    Real-Time Generation
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

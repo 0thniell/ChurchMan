@@ -1,0 +1,43 @@
+{% extends "church/base.html" %}
+
+{% block title %} Order Of Service {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">Order Of Service</h1>
+    <a href="{% url 'add-order-of-service' %}" class="btn btn-primary btn-lg" role="button">Add Order Of Service</a>
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nature Of Service</th>
+                <th>Activities</th>
+                <th>Duration</th>
+                <th>Activities Moderator</th>
+                <th>Service Time</th>
+                <th>Service Cordinator</th>
+                <th>Service Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Order_Of_Service in order_of_service %}
+            <tr>
+                <td>{{ Order_Of_Service.id}} </td>
+                <td>{{ Order_Of_Service.nature_of_service}} </td>
+                <td>{{ Order_Of_Service.activities}} </td>
+                <td>{{ Order_Of_Service.duration}} </td>
+                <td>{{ Order_Of_Service.activities_moderator}} </td>
+                <td>{{ Order_Of_Service.service_time}} </td>
+                <td>{{ Order_Of_Service.service_cordinator}} </td>
+                <td>{{ Order_Of_Service.service_date}} </td>
+                <td>
+                    <a href="{% url 'update-order-of-service' pk=Order_Of_Service.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete-order-of-service' pk=Order_Of_Service.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

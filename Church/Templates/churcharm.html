@@ -1,0 +1,13 @@
+{% extends 'church/base.html' %}
+{% block content %}
+<a href="{% url 'add-churcharm' %}" class="btn btn-primary btn-lg" role="button">Add</a>
+{% for churcharm in churcharms %}
+<li class="list-group" style="margin-top: 40px;">
+    <div>
+        <a href="{% url 'churcharm_detail' name=churcharm.name %}" class="list-group-item list-group-item-action">{{ churcharm.name|capfirst }}</a>
+    </div>
+</li>
+{% endfor %}
+</div>
+
+{% endblock content %}

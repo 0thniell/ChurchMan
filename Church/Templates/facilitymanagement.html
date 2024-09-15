@@ -1,0 +1,45 @@
+{% extends "church/base.html" %}
+
+{% block title %} Facility Management {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">Facility Management</h1>
+    <a href="{% url 'add-facility_management' %}" class="btn btn-primary btn-lg" role="button">Add</a>
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Facility Name</th>
+                <th>Facility Type</th>
+                <th>Facility Location</th>
+                <th>Description</th>
+                <th>Maintenance Log</th>
+                <th>Last Date Maintained</th>
+                <th>Next Due Date</th>
+                <th>Maintenance Expense</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for facility_management in facility_managements %}
+            <tr>
+                <td>{{ facility_management.id}} </td>
+                <td>{{ facility_management.facility_name}} </td>
+                <td>{{ facility_management.facility_type}} </td>
+                <td>{{ facility_management.facility_location}} </td>
+                <td>{{ facility_management.description}} </td>
+                <td>{{ facility_management.maintenance_log}} </td>
+                <td>{{ facility_management.last_date_maintained}} </td>
+                <td>{{ facility_management.next_due_date}} </td>
+                <td>{{ facility_management.maintenance_expense}} </td>
+                <td>
+                    <a href="{% url 'update-facility_management' pk=facility_management.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete-facility_management' pk=facility_management.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

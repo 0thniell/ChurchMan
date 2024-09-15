@@ -1,0 +1,50 @@
+{% extends "church/base.html" %}
+
+{% block title %} Event Schedule {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">Events</h1>
+    <a href="{% url 'add_event' %}" class="btn btn-primary btn-lg" role="button">Add Event</a>
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Event Title</th>
+                <th>Event Description</th>
+                <th>Event Date</th>
+                <th>Event Time</th>
+                <th>Location</th>
+                <th>Targeted Group</th>
+                <th>Pastor In Charge</th>
+                <th>Phone Number</th>
+                <th>Is The Event Approved</th>
+                <th>Approved By</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.id}} </td>
+                <td>{{ event.event_title}} </td>
+                <td>{{ event.event_description}} </td>
+                <td>{{ event.event_date}} </td>
+                <td>{{ event.event_time}} </td>
+                <td>{{ event.location}} </td>
+                <td>{{ event.target_group}} </td>
+                <td>{{ event.pastor_in_charge}} </td>
+                <td>{{ event.phone_number}} </td>
+                <td>{{ event.is_the_event_approved}} </td>
+                <td>{{ event.approved_by}} </td>
+
+                <td>
+                    <a href="{% url 'update-event' pk=event.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete-event' pk=event.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

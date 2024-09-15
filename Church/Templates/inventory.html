@@ -1,0 +1,41 @@
+{% extends "church/base.html" %}
+
+{% block title %} Inventory {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">Inventory</h1>
+    <a href="{% url 'add-inventory' %}" class="btn btn-primary btn-lg" role="button">Add</a>
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Other Info</th>
+                <th>Record Officer</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inventory in inventorys %}
+            <tr>
+                <td>{{ inventory.id}} </td>
+                <td>{{ inventory.date}} </td>
+                <td>{{ inventory.description}} </td>
+                <td>{{ inventory.quantity}} </td>
+                <td>{{ inventory.status}} </td>
+                <td>{{ inventory.other_info}} </td>
+                <td>{{ inventory.record_officer}} </td>
+                <td>
+                    <a href="{% url 'update-inventory' pk=inventory.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete-inventory' pk=inventory.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
