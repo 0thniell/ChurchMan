@@ -1,0 +1,35 @@
+{% extends "church/base.html" %}
+
+{% block title %} Income Record {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">Income Records</h1>
+    <a href="{% url 'add-income' %}" class="btn btn-primary btn-lg" role="button">Add</a>
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Income in income %}
+            <tr>
+                <td>{{ Income.id}} </td>
+                <td>{{ Income.amount}} </td>
+                <td>{{ Income.description}} </td>
+                <td>{{ Income.date}} </td>
+                <td>
+                    <a href="{% url 'update-income' pk=Income.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete-income' pk=Income.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

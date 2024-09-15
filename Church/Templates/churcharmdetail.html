@@ -1,0 +1,33 @@
+{% extends "church/base.html" %}
+
+{% block title %} Church Arms {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">Church Arms</h1>
+    <a href="{% url 'update-churcharm' name=churcharm.name %}" class="btn btn-warning">Update</a>
+    <a href="{% url 'delete-churcharm' name=churcharm.name %}" class="btn btn-danger">Delete</a> 
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Members</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ churcharm.name}} </td>
+                <td>{{ churcharm.description}} </td>
+                <td>
+                    <ul>
+                        {% for member in churcharm.members.all %}
+                            <li>{{ member.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>            
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

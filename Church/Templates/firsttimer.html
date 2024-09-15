@@ -1,0 +1,59 @@
+{% extends "church/base.html" %}
+
+{% block title %} First Timer {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">First Timers</h1>
+    <a href="{% url 'add_firsttimer' %}" class="btn btn-primary btn-lg" role="button">Add First Timer</a>
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Visitors Name</th>
+                <th>Who Invited You</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Purpose Of Coming</th>
+                <th>Address</th>
+                <th>Sex</th>
+                <th>Marital Status</th>
+                <th>Would You Like To Be OUr Member</th>
+                <th>Your Experience In The Service</th>
+                <th>Have You Given Your Life To Christ</th>
+                <th>If Yes Date Converted</th>
+                <th>Your Prayer Request</th>
+                <th>Will You Like To Fellowship With Us Again</th>
+                <th>Record Officer</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for first_timer in firsttimers %}
+            <tr>
+                <td>{{ first_timer.id}} </td>
+                <td>{{ first_timer.visitors_name}} </td>
+                <td>{{ first_timer.who_invited_you}} </td>
+                <td>{{ first_timer.phone_number}} </td>
+                <td>{{ first_timer.email_address}} </td>
+                <td>{{ first_timer.purpose_of_coming}} </td>
+                <td>{{ first_timer.address}} </td>
+                <td>{{ first_timer.sex}} </td>
+                <td>{{ first_timer.marital_status}} </td>
+                <td>{{ first_timer.would_you_like_to_be_our_member}} </td>
+                <td>{{ first_timer.your_experience_in_the_service}} </td>
+                <td>{{ first_timer.have_you_given_your_life_to_christ}} </td>
+                <td>{{ first_timer.if_yes_date_converted}} </td>
+                <td>{{ first_timer.your_prayer_request}} </td>
+                <td>{{ first_timer.will_you_like_to_fellowship_with_us_again}} </td>
+                <td>{{ first_timer.record_officer}}
+                <td>
+                    <a href="{% url 'update-first-timer' pk=first_timer.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete-first-timer' pk=first_timer.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

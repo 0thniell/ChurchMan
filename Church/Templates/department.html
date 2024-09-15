@@ -1,0 +1,22 @@
+{% extends 'church/base.html' %}
+{% block content %}
+<div class="container">
+    <h2 class="text-center mt-4 mb-4">Departments</h2>
+
+    <!-- Add Button -->
+    <div class="text-center mb-4">
+        <a href="{% url 'add-department' %}" class="btn btn-primary btn-lg" role="button">Add New Department</a>
+    </div>
+
+    <!-- Department List -->
+    <ul class="list-group">
+        {% for department in departments %}
+        <li class="list-group-item" style="margin-top: 20px;">
+            <a href="{% url 'department_detail' name=department.name %}" class="text-dark">
+                <strong>{{ department.name|capfirst }}</strong>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

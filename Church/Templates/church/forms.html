@@ -1,0 +1,12 @@
+{% extends "church/base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="text-center"> {{title}} </h1>
+<form method="POST" class="jumbotron">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class="btn btn-success btn-block"type="submit"> Save </button>
+</form>
+{% endblock %}

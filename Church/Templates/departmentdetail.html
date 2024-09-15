@@ -1,0 +1,40 @@
+{% extends "church/base.html" %}
+
+{% block title %} Departments {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Title -->
+    <h1 class="text-center my-4">Departments</h1>
+    
+    <!-- Action Buttons -->
+    <div class="text-center mb-4">
+        <a href="{% url 'update-department' name=department.name %}" class="btn btn-warning mx-2">Update</a>
+        <a href="{% url 'delete-department' name=department.name %}" class="btn btn-danger mx-2">Delete</a>
+    </div>
+    
+    <!-- Department Details Table -->
+    <table class="table table-bordered table-striped text-center w-100">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Members</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ department.name }}</td>
+                <td>{{ department.description }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for member in department.members.all %}
+                            <li>{{ member.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
